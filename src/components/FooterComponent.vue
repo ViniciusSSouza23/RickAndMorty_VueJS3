@@ -8,7 +8,7 @@
 <style lang="scss" scoped>
 .app-footer{
   a{
-    color: rgb(13, 211, 13);
+    color: rgb(0, 190, 149);
     text-decoration: none;
     transition: filter 1s;
     &:hover{
