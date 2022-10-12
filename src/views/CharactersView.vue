@@ -4,7 +4,7 @@
       <h2 class="text-center mb-5">All characters</h2>
       <div class="row">
         <div v-for="(item, i) in items" :key="i" class="col-lg-4  mb-4">
-          <card-item :props="item" />
+          <card-item :props="item" :isRoute="true" />
         </div>
       </div>
     </div>
