@@ -30,23 +30,62 @@
           {{ item?.props?.name }}
         </h4>
         <hr class="mx-auto" style="color: black; width: 50%" />
-        <div class="d-flex align-items-start">
-          <img width="32" height="32" src="@/assets/imgs/CardItem/gender.png" alt="Gender">
-          <p>{{ item?.props?.gender }}</p>
+
+        <div class="row mt-4 line-border">
+          <div class="col-lg-6 d-flex">
+            <div class="d-flex align-items-start mx-4">
+              <img
+                class="me-1"
+                width="32"
+                height="32"
+                src="@/assets/imgs/CardItem/gender.png"
+                alt="Gender"
+              />
+              <p>{{ item?.props?.gender }}</p>
+            </div>
+            <div class="d-flex">
+              <img
+                class="me-1"
+                width="28"
+                height="28"
+                src="@/assets/imgs/CardItem/alien.png"
+                alt="species"
+              />
+              <p>{{ item?.props?.species }}</p>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="d-flex align-items-start mb-2 mx-4">
+              <div class="status mx-2" :class="item?.props?.status"></div>
+              <p class="pb-0 mb-0 mt-n1">{{ item?.props?.status }}</p>
+            </div>
+            <div class="d-flex align-items-start">
+              <img
+                class="me-1"
+                width="24"
+                height="24"
+                src="@/assets/imgs/CardItem/location.png"
+                alt="Earth"
+              />
+              <p>{{origin}}</p>
+            </div>
+          </div>
         </div>
-        <p>Species:{{ item?.props?.species }}</p>
-        <p>Status:{{ item?.props?.status }}</p>
-        <div class="d-flex align-items-start">
-          <img class="me-1" width="24" height="24" src="@/assets/imgs/CardItem/location.png" alt="Earth">
-          <p>{{item?.props?.origin?.name}}</p>
-        </div>
-        
       </div>
     </div>
   </div>
 </template>
 <script setup>
+import {computed} from "vue";
 const item = defineProps(["props", "isRoute"]);
+ const origin = computed(()=>{
+  if(item.props.origin.name.includes('Replacement')){
+    return 'Earth'
+  }
+  else{
+    return  item.props.origin.name
+  }
+ })
 </script>
 <style lang="scss" scoped>
 .card-item-component {
@@ -64,13 +103,33 @@ const item = defineProps(["props", "isRoute"]);
       }
     }
     .custom-card-body {
+      //display: flex;
       h4 {
         font-family: "Roboto", sans-serif;
         color: #fff;
       }
-      p{
+      p {
         color: #fff;
         font-size: 18px;
+      }
+      .status {
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        &.Alive {
+          background-color: green;
+        }
+        &.Dead {
+          background-color: red;
+        }
+        &.unknown {
+          background-color: whitesmoke;
+        }
+      }
+
+      .line-border {
+        border: 2px solid #000;
+        padding: 16px;
       }
     }
   }
