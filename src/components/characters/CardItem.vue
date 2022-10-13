@@ -31,8 +31,8 @@
         </h4>
         <hr class="mx-auto" style="color: black; width: 50%" />
 
-        <div class="row mt-4 line-border">
-          <div class="col-lg-6 d-flex">
+        <div class="row mt-4 line-border align-items-center">
+          <div class="col-lg-6 d-flex align-items-center">
             <div class="d-flex align-items-start mx-4">
               <img
                 class="me-1"
@@ -62,8 +62,8 @@
             <div class="d-flex align-items-start">
               <img
                 class="me-1"
-                width="24"
-                height="24"
+                width="22"
+                height="22"
                 src="@/assets/imgs/CardItem/location.png"
                 alt="Earth"
               />
@@ -79,11 +79,11 @@
 import {computed} from "vue";
 const item = defineProps(["props", "isRoute"]);
  const origin = computed(()=>{
-  if(item.props.origin.name.includes('Replacement')){
+  if(item?.props?.origin?.name.includes('Replacement')){
     return 'Earth'
   }
   else{
-    return  item.props.origin.name
+    return  item?.props?.origin?.name
   }
  })
 </script>
