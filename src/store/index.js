@@ -25,7 +25,7 @@ export default createStore({
     getAll(context, page = 1) {
       return new Promise((resolve, reject) => {
         window.axios
-          .get(`/character/?${page}`)
+          .get(`/character/?page=${page}`)
           .then((response) => {
             context.commit("setAll", response.data.results);
             resolve(response);
