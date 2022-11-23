@@ -32,7 +32,7 @@
         <hr class="mx-auto" style="color: black; width: 50%" />
 
         <div class="row mt-4 line-border align-items-center">
-          <div class="col-lg-6 d-flex align-items-start">
+          <div class="col-lg-5 d-flex align-items-start">
             <div class="d-flex align-items-start mx-4">
               <img
                 class="me-1"
@@ -54,7 +54,7 @@
               <p>{{ item?.props?.species }}</p>
             </div>
           </div>
-          <div class="col-lg-6 d-flex align-items-start">
+          <div class="col-lg-7 d-flex align-items-start">
             <div class="d-flex align-items-start mx-4">
               <div class="status mx-2" :class="item?.props?.status"></div>
               <p class="pb-0 mb-0 mt-n1">{{ item?.props?.status }}</p>

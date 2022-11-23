@@ -1,10 +1,10 @@
 <template>
   <div class="paginator-component d-flex justify-content-center">
-    <button @click="prev">Prev</button>
+    <button  class="btn" @click="prev">Prev</button>
     <div class="number mx-3">
       <span>{{ props.page }}</span>
     </div>
-    <button @click="next">Next</button>
+    <button class="btn" @click="next">Next</button>
   </div>
 </template>
 <script setup>
@@ -29,6 +29,13 @@ function prev() {
     span {
       font-size: 18px;
       color: #fff;
+    }
+  }
+
+  .btn{
+    color: #fff;
+    &:hover{
+      color: aquamarine;
     }
   }
 }
