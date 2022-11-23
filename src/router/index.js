@@ -17,6 +17,11 @@ const routes = [
     name: "person",
     component: () => import("../views/CharacterView.vue"),
   },
+  {
+    path:"/search",
+    name: "search",
+    component: ()=> import("../views/SearchView.vue")
+  }
 ];
 
 const router = createRouter({

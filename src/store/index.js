@@ -44,6 +44,19 @@ export default createStore({
           .catch(reject);
       });
     },
+    search(context, name) {
+      return new Promise((resolve, reject) => {
+        
+        const names = name.toString()
+        window.axios
+          .get(`/character/?name=${names}`)
+          .then((response) => {
+            context.commit("setAll", response.data.results);
+            resolve(response);
+          })
+          .catch(reject);
+      });
+    },
   },
   modules: {},
 });

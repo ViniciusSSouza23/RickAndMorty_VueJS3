@@ -31,8 +31,8 @@
         </h4>
         <hr class="mx-auto" style="color: black; width: 50%" />
 
-        <div class="row mt-4 line-border align-items-center">
-          <div class="col-lg-5 d-flex align-items-start">
+        <div class="d-flex justify-content-center mt-4 line-border align-items-center">
+          <div class="d-flex align-items-start">
             <div class="d-flex align-items-start mx-4">
               <img
                 class="me-1"
@@ -54,7 +54,7 @@
               <p>{{ item?.props?.species }}</p>
             </div>
           </div>
-          <div class="col-lg-7 d-flex align-items-start">
+          <div class="d-flex align-items-start">
             <div class="d-flex align-items-start mx-4">
               <div class="status mx-2" :class="item?.props?.status"></div>
               <p class="pb-0 mb-0 mt-n1">{{ item?.props?.status }}</p>
@@ -67,7 +67,7 @@
                 src="@/assets/imgs/CardItem/location.png"
                 alt="Earth"
               />
-              <p>{{origin}}</p>
+              <p>{{ origin }}</p>
             </div>
           </div>
         </div>
@@ -76,16 +76,15 @@
   </div>
 </template>
 <script setup>
-import {computed} from "vue";
+import { computed } from "vue";
 const item = defineProps(["props", "isRoute"]);
- const origin = computed(()=>{
-  if(item?.props?.origin?.name.includes('Replacement')){
-    return 'Earth'
+const origin = computed(() => {
+  if (item?.props?.origin?.name.includes("Replacement")) {
+    return "Earth";
+  } else {
+    return item?.props?.origin?.name;
   }
-  else{
-    return  item?.props?.origin?.name
-  }
- })
+});
 </script>
 <style lang="scss" scoped>
 .card-item-component {
