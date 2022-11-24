@@ -12,7 +12,7 @@
             :alt="item.props.name"
           />
         </div>
-        <div class="custom-card-body mt-4">
+        <div :class="[item.isRoute ? 'isRoute' : '']" class="custom-card-body mt-4">
           <h4 class="text-center">{{ item.props.name }}</h4>
         </div>
       </div>
@@ -103,7 +103,9 @@ const origin = computed(() => {
     }
     .custom-card-body {
       //display: flex;
-      height: 50px;
+      &.isRoute{
+        height: 50px;
+      }
       h4 {
         font-family: "Roboto", sans-serif;
         color: #fff;
