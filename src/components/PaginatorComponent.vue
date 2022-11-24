@@ -1,10 +1,10 @@
 <template>
   <div class="paginator-component d-flex justify-content-center">
-    <button class="btn" @click="prev" :disabled="havePrev">Prev</button>
+    <button class="btn" :class="[havePrev ? 'disabled' : '' ]" @click="prev" :disabled="havePrev">Prev</button>
     <div class="number mx-3">
       <span>{{ props.page }}</span>
     </div>
-    <button class="btn" @click="next" :disabled="haveNext">Next</button>
+    <button :class="[haveNext ? 'disabled' : '' ]" class="btn" @click="next" :disabled="haveNext">Next</button>
   </div>
 </template>
 <script setup>
@@ -49,7 +49,11 @@ const havePrev = computed(() => {
   .btn {
     color: #fff;
     &:hover {
-      color: aquamarine;
+     color: rgb(0, 190, 149);
+    }
+    &.disabled{
+      border: none;
+      opacity: 0.2;
     }
   }
 }

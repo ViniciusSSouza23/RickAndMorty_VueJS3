@@ -103,6 +103,7 @@ const origin = computed(() => {
     }
     .custom-card-body {
       //display: flex;
+      height: 50px;
       h4 {
         font-family: "Roboto", sans-serif;
         color: #fff;

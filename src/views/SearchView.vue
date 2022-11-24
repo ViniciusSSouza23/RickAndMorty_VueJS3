@@ -26,7 +26,7 @@
             Resultado encontrados para: {{ search }}
           </em>
           <div class="col-lg-3 mb-4 pt-4" v-for="item in items" :key="item">
-            <card-item :props="item" :isRoute="true" />
+            <card-item class="size" :props="item" :isRoute="true" />
           </div>
         </div>
         <div class="mx-auto w-100">
@@ -44,11 +44,11 @@ import PaginatorComponent from "@/components/PaginatorComponent.vue";
 import { useRoute, useRouter } from "vue-router";
 
 const store = useStore();
-const search = ref("");
-const error = ref("");
 const route = useRoute();
 const router = useRouter();
+const error = ref("");
 const page = ref(route.query.page || 1);
+const search = ref(route.query.s || '');
 
 const items = computed(() => {
   return store.state.items;
