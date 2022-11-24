@@ -1,10 +1,36 @@
 <template>
   <div class="paginator-component d-flex justify-content-center">
-    <button class="btn" :class="[havePrev ? 'disabled' : '' ]" @click="prev" :disabled="havePrev">Prev</button>
+    <button
+      class="btn"
+      :class="[havePrev ? 'disabled' : '']"
+      @click="prev"
+      :disabled="havePrev"
+    >
+      <img
+        class="img-fluid prev"
+        src="../assets/imgs/next-white.png"
+        width="42"
+        height="42"
+        alt="paginator"
+      />
+    </button>
     <div class="number mx-3">
       <span>{{ props.page }}</span>
     </div>
-    <button :class="[haveNext ? 'disabled' : '' ]" class="btn" @click="next" :disabled="haveNext">Next</button>
+    <button
+      :class="[haveNext ? 'disabled' : '']"
+      class="btn"
+      @click="next"
+      :disabled="haveNext"
+    >
+      <img
+        class="img-fluid"
+        src="../assets/imgs/next-white.png"
+        width="42"
+        height="42"
+        alt="paginator"
+      />
+    </button>
   </div>
 </template>
 <script setup>
@@ -49,11 +75,14 @@ const havePrev = computed(() => {
   .btn {
     color: #fff;
     &:hover {
-     color: rgb(0, 190, 149);
+      color: rgb(0, 190, 149);
     }
-    &.disabled{
+    &.disabled {
       border: none;
       opacity: 0.2;
+    }
+    .prev{
+      rotate: 180deg;
     }
   }
 }
