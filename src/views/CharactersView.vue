@@ -3,12 +3,12 @@
     <div class="container">
       <h2 class="text-center mb-5">All characters</h2>
       <div class="row">
-        <div v-for="(item, i) in items" :key="i" class="col-lg-4 mb-4">
+        <div v-for="(item, i) in items" :key="i" class="col-lg-3 mb-4">
           <card-item :props="item" :isRoute="true" />
         </div>
       </div>
       <div class="mx-auto w-100">
-        <paginator-component @next="nextPage" @prev="prevPage" :page="page" />
+        <paginator-component @next="nextPage" @prev="prevPage" :page="page" :pages="pages" />
       </div>
     </div>
   </div>
@@ -30,6 +30,9 @@ onMounted(() => {
 const items = computed(() => {
   return store.state.items;
 });
+const pages = computed(()=>{
+  return store.state.count;
+})
 
 //next
 function nextPage() {

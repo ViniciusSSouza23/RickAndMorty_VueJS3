@@ -11,6 +11,7 @@ export default createStore({
   state: {
     items: [],
     person: {},
+    count: "",
   },
   getters: {},
   mutations: {
@@ -20,6 +21,9 @@ export default createStore({
     setPerson(state, person) {
       state.person = { ...person };
     },
+    setCount(state, count){
+      state.count = count;
+    }
   },
   actions: {
     getAll(context, page = 1) {
@@ -28,6 +32,7 @@ export default createStore({
           .get(`/character/?page=${page}`)
           .then((response) => {
             context.commit("setAll", response.data.results);
+            context.commit("setCount", response.data.info.pages);
             resolve(response);
           })
           .catch(reject);
@@ -44,14 +49,15 @@ export default createStore({
           .catch(reject);
       });
     },
-    search(context, name) {
+    search(context, { name, page }) {
       return new Promise((resolve, reject) => {
-        
-        const names = name.toString()
+        const names = name.toString();
+        const pages = parseInt(page);
         window.axios
-          .get(`/character/?name=${names}`)
+          .get(`/character/?page=${pages}&name=${names}`)
           .then((response) => {
             context.commit("setAll", response.data.results);
+            context.commit("setCount", response.data.info.pages);
             resolve(response);
           })
           .catch(reject);
