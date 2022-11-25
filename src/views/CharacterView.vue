@@ -1,5 +1,13 @@
 <template>
   <div class="character-view">
+    <loading
+      color="#00BE95"
+      loader="bars"
+      opacity="0.9"
+      background-color="#000"
+      v-model:active="isLoading"
+      :is-full-page="true"
+    />
     <div class="container py-5">
       <button @click="router.go(-1)" class="btn btn-return text-white mb-4">
         <img
@@ -21,15 +29,23 @@
 <script setup>
 import CardItem from "@/components/characters/CardItem.vue";
 import { useRoute, useRouter } from "vue-router";
-import { onMounted, computed } from "vue";
+import { onMounted, computed, ref } from "vue";
 import { useStore } from "vuex";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 const route = useRoute();
 const router = useRouter();
 const id = route.params.id;
 const store = useStore();
+const isLoading = ref(false);
 
 onMounted(() => {
-  store.dispatch("getPerson", id);
+  isLoading.value = true;
+  store.dispatch("getPerson", id).finally(() => {
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 500);
+  });
 });
 
 const person = computed(() => {
@@ -42,8 +58,6 @@ const person = computed(() => {
     background-color: transparent;
     color: #000;
     border: none;
-  
   }
- 
 }
 </style>

@@ -1,5 +1,13 @@
 <template>
   <div class="search-view">
+    <loading
+      color="#00BE95"
+      loader="bars"
+      opacity="0.9"
+      background-color="#000"
+      v-model:active="isLoading"
+      :is-full-page="true"
+    />
     <div class="header">
       <div class="container">
         <div class="row justify-content-center">
@@ -30,7 +38,12 @@
           </div>
         </div>
         <div class="mx-auto w-100">
-          <paginator-component @next="nextPage" @prev="prevPage" :page="page" :pages="count" />
+          <paginator-component
+            @next="nextPage"
+            @prev="prevPage"
+            :page="page"
+            :pages="count"
+          />
         </div>
       </div>
     </div>
@@ -42,13 +55,16 @@ import { ref, watchEffect, computed, onMounted } from "vue";
 import CardItem from "@/components/characters/CardItem.vue";
 import PaginatorComponent from "@/components/PaginatorComponent.vue";
 import { useRoute, useRouter } from "vue-router";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 
 const store = useStore();
 const route = useRoute();
 const router = useRouter();
 const error = ref("");
 const page = ref(route.query.page || 1);
-const search = ref(route.query.s || '');
+const search = ref(route.query.s || "");
+const isLoading = ref(false);
 
 const items = computed(() => {
   return store.state.items;
@@ -67,14 +83,26 @@ watchEffect(() => {
 });
 
 onMounted(() => {
-  store.dispatch("search", { name: search.value, page: page.value });
+  isLoading.value = true;
+  store
+    .dispatch("search", { name: search.value, page: page.value })
+    .finally(() => {
+      isLoading.value = false;
+    });
 });
 
 //next
 function nextPage() {
   if (count.value > page.value) {
+    isLoading.value = true;
     page.value++;
-    store.dispatch("search", { name: search.value, page: page.value });
+    store
+      .dispatch("search", { name: search.value, page: page.value })
+      .finally(() => {
+        setTimeout(() => {
+          isLoading.value = false;
+        }, 1000);
+      });
     router.push({ ...route, query: { s: search.value, page: page.value } });
   }
 }
@@ -82,8 +110,15 @@ function nextPage() {
 //prev
 function prevPage() {
   if (page.value > 1) {
+    isLoading.value = true;
     page.value--;
-    store.dispatch("search", { name: search.value, page: page.value });
+    store
+      .dispatch("search", { name: search.value, page: page.value })
+      .finally(() => {
+        setTimeout(() => {
+          isLoading.value = false;
+        }, 1000);
+      });
     router.push({ ...route, query: { s: search.value, page: page.value } });
   }
 }
