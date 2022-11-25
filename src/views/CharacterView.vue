@@ -16,7 +16,6 @@
           src="@/assets/imgs/CardItem/arrow-white.png"
           alt="return"
         />
-        Voltar
       </button>
       <div class="row justify-content-center">
         <div class="col-lg-7">
