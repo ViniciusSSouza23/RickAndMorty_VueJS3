@@ -12,13 +12,16 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
-            <div class="form-group">
+            <div class="form-group position-relative">
               <input
                 v-model="search"
                 class="form-control mt"
                 type="text"
                 placeholder="Search"
               />
+              <button v-if="search.length" class="position-absolute button-close">
+                <img width="32" height="32" src="../assets/imgs/icon-close.png" alt="Icon">
+              </button>
             </div>
           </div>
         </div>
@@ -133,6 +136,13 @@ function prevPage() {
     background-position: center center;
     .mt {
       margin-top: 120px;
+    }
+
+    .button-close{
+      right: 0;
+      top: 0;
+      background: transparent;
+      border: none;
     }
   }
   .body {
