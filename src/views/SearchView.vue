@@ -19,7 +19,7 @@
                 type="text"
                 placeholder="Search"
               />
-              <button v-if="search.length" class="position-absolute button-close">
+              <button @click="clear" v-if="search.length" class="position-absolute button-close">
                 <img width="32" height="32" src="../assets/imgs/icon-close.png" alt="Icon">
               </button>
             </div>
@@ -124,6 +124,15 @@ function prevPage() {
       });
     router.push({ ...route, query: { s: search.value, page: page.value } });
   }
+}
+
+function clear(){
+  isLoading.value = true;
+  search.value = "";
+  store.dispatch("search",{name: search.value, page: 1}).finally(()=>{
+    router.push({...route, query:{page: 1}});
+    isLoading.value = false;
+  })
 }
 </script>
 <style lang="scss" scoped>

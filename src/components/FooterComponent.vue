@@ -1,7 +1,7 @@
 <template>
   <footer class="py-4 app-footer bg-dark">
     <div class="container">
-      <h6 class="text-center">Desenvolvido por <a href="https://www.linkedin.com/in/vinicius-santos-souza/" target="_blank"> Vinicius Souza</a></h6>
+      <h6 class="text-center">Created by <a href="https://www.linkedin.com/in/vinicius-santos-souza/" target="_blank"> Vinicius Souza</a></h6>
     </div>
   </footer>
 </template>
