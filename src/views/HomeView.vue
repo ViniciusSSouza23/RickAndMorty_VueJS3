@@ -1,7 +1,7 @@
 <template>
   <div class="home-view pb-5 pt-4">
     <div class="container">
-      <div class="custom-card mx-auto w-75 mb-5 text-center">
+      <div class="custom-card mx-auto  mb-5 text-center">
         <h4>Welcome to Rick and Morty Wiki</h4>
         <hr />
         <div class="row">
@@ -33,6 +33,9 @@
 <style lang='scss' scoped>
 .home-view {
   .custom-card {
+    @media screen and (min-width:991px) {
+      width: 75%;
+    }
     padding: 24px;
     border-radius: 20px;
     background-color: #bbbbbb;
