@@ -34,7 +34,7 @@
         </div>
         <div v-else class="row">
           <em v-if="search.length > 0">
-            Resultado encontrados para: {{ search }}
+            search results for : {{ search }}
           </em>
           <div class="col-lg-3 mb-4 pt-4" v-for="item in items" :key="item">
             <card-item class="size" :props="item" :isRoute="true" />
@@ -81,7 +81,7 @@ watchEffect(() => {
     .dispatch("search", { name: search.value, page: page.value })
     .then()
     .catch(() => {
-      error.value = "nenhum item encontrado para:";
+      error.value = "no search results for:";
     });
 });
 

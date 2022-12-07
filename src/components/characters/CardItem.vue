@@ -54,8 +54,8 @@
               <p>{{ item?.props?.species }}</p>
             </div>
           </div>
-          <div class="d-flex flex-column flex-lg-row align-items-start">
-            <div class="d-flex align-items-start mx-lg-4 mb-lg-0 mb-3">
+          <div class="d-flex flex-column flex-lg-row align-items-center">
+            <div class="d-flex align-items-start mx-lg-4 mb-lg-0 mb-3 mt-lg-1">
               <div class="status mx-lg-2 mx-1 me-2 " :class="item?.props?.status"></div>
               <p class="pb-0 mb-0 mt-n1">{{ item?.props?.status }}</p>
             </div>
