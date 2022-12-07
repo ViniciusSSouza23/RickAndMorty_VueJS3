@@ -7,9 +7,9 @@
         <div class="row">
           <div class="col-lg-6">
             <p class="mt-5 pt-5">
-              This website is a Wiki about Rick and Morty, this website was made
-              with VueJs 3 using composition API. For the UI, i used Bootstrap 5
-              and Element-Plus, i made this website to train VueJs with
+              This website is a Wiki about Rick and Morty, it was made
+              with VueJs 3 using composition API. For the UI, I used Bootstrap 5
+              and Element-Plus, I made this website to train VueJs with
               composition API, so enjoy your experiencie on my website, and if
               you have any suggestions fell free to send to me this suggestions
               on github.
